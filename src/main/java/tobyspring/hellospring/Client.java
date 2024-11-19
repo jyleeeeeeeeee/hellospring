@@ -6,13 +6,9 @@ import java.math.BigDecimal;
 public class Client {
 
     public static void main(String[] args) throws IOException {
-        PaymentService paymentService = new WebApiExRatePaymentService();
+        ObjectFactory objectFactory = new ObjectFactory();
+        PaymentService paymentService = objectFactory.paymentService();
         Payment payment = paymentService.prepare(100L, "USD", BigDecimal.valueOf(50.7));
         System.out.println(payment);
-    }:
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
     }
 }
