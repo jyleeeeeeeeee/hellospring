@@ -2,8 +2,12 @@ package tobyspring.hellospring.payment;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tobyspring.hellospring.ObjectFactory;
 import tobyspring.hellospring.TestObjectFactory;
 
@@ -14,11 +18,15 @@ import static java.math.BigDecimal.TEN;
 import static java.math.BigDecimal.valueOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = TestObjectFactory.class)
 class PaymentServiceSpringTest {
+
+    @Autowired
+    BeanFactory beanFactory;
 
     @Test
     void convertedAmount() throws IOException {
-        BeanFactory beanFactory = new AnnotationConfigApplicationContext(TestObjectFactory.class);
         PaymentService paymentService = beanFactory.getBean(PaymentService.class);
 
         Payment payment = paymentService.prepare(1L, "USD", TEN);
