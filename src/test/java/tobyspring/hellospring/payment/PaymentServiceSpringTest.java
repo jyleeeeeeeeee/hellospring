@@ -23,12 +23,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class PaymentServiceSpringTest {
 
     @Autowired
-    BeanFactory beanFactory;
+    PaymentService paymentService;
 
     @Test
     void convertedAmount() throws IOException {
-        PaymentService paymentService = beanFactory.getBean(PaymentService.class);
-
         Payment payment = paymentService.prepare(1L, "USD", TEN);
 
         assertThat(payment.getExRate()).isEqualByComparingTo(valueOf(1_000));
