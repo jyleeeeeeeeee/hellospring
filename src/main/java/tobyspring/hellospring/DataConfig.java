@@ -1,6 +1,5 @@
 package tobyspring.hellospring;
 
-import com.zaxxer.hikari.HikariDataSource;
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
@@ -12,10 +11,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import tobyspring.hellospring.data.OrderRepository;
 
 import javax.sql.DataSource;
-import javax.xml.crypto.Data;
 
 @Configuration
 public class DataConfig {
